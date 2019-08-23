@@ -10,13 +10,14 @@
 1. cwon mway wepositowy `git clone`
 2. navigate :v: the diwectory ./filmbackend `cd filmbackend`
 3. instawl le dependencies _aawmowst there **Theehee**_  xoxo `npm install`
-4. wansch the nowd :smirk: serwer uWu ::  `node index.js`
+4. wansch the :smirk: nowd :smirk: serwer uWu ::  `node index.js`
 
 5. restore the database `knex migrate:latest`
 6. **OPTIONAL** fill in the testdata `knex seeds:run `
 
-7.
 
-## Usage
+## :clap: Usage :clap:
+
+
 
 
