@@ -10,11 +10,8 @@ app.listen(port, console.log('listening on port ' + port))
 app.use(express.json())
 
 app.get('/api/', async (req, res) => {
-    console.log('kek');
-    var result;
 
-    result = await knex('items')
-        .select('*')
+    var result = await get_items()
 
     console.log(result)
     res.send({
@@ -31,6 +28,11 @@ app.get('/api/', async (req, res) => {
                 text: 'rating',
                 value: 'rating'
             },
+            {
+                text: 'Actions',
+                value: 'action',
+                sortable: false
+            },
         ],
         items: result
     })
@@ -43,8 +45,27 @@ app.post('/api/', async (req, res) => {
         { id: id[0].id + 1, name: req.body.name, rating: req.body.rating }
     )
 
-    var result = await knex('items')
-        .select('*')
+    var result = await get_items()
+
+    res.send(result)
+
+    res.end()
+})
+
+
+async function get_items() {
+    return await knex('items').select('*')
+}
+
+
+knex.delete('/api/', async (req, res) => {
+
+    var id = req.body.id
+
+
+    var res = await knex('items').where({ id: id }).delete()
+
+    var result = await get_items()
 
     res.send(result)
 
